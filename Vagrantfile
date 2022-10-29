@@ -11,6 +11,7 @@ touch /tmp/testfile
 apt-get update
 apt-get install git -y
 apt-get install wget -y
+apt install net-tools
 mkdir vagrant
 useradd job
 SCRIPT
