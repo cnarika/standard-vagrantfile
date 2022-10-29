@@ -1,4 +1,4 @@
-#!/bin/bash 
+$script = <<-SCRIPT
 
 sudo apt update -y
 
@@ -86,3 +86,5 @@ docker run \
   -v jenkins-data:/var/jenkins_home \
   -v /var/run/docker.sock:/var/run/docker.sock \
   jenkins/jenkins
+  
+SCRIP
