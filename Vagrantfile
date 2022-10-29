@@ -46,7 +46,8 @@ docker run \
   jenkins/jenkins
 cd /home 
 touch hug.yml 
-touch nat.yml 
+touch nat.yml
+exit 
 SCRIPT
 
 Vagrant.configure("2") do |config|
