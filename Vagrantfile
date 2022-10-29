@@ -14,6 +14,39 @@ apt-get install wget -y
 apt install net-tools
 mkdir vagrant
 useradd job
+sudo apt install docker.io -y 
+systemctl start docker
+systemctl enable docker
+systemctl status docker
+echo " Install Terraform"
+sudo apt install update -y 
+sudo wget https://releases.hashicorp.com/terraform/1.1.2/terraform_1.1.2_linux_amd64.zip 
+sudo unzip terraform_1.1.2_linux_amd64.zip
+sudo mv terraform /usr/bin/
+terraform --version
+echo "Install git"
+apt install -y git
+amazon-linux-extras install epel
+apt update -y
+apt install ansible -y
+apt install nginx -y
+apt install python-pip -y  
+apt install awscli 
+apt install boto -y 
+echo "Install Jenkins"
+docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  --name myjenkin \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkins/jenkins
+cd /home 
+touch hug.yml 
+touch nat.yml 
 SCRIPT
 
 Vagrant.configure("2") do |config|
