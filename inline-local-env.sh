@@ -47,24 +47,27 @@ terraform --version
 
 echo "Install Docker engine"
 sudo apt update -y
-sudo apt-get remove docker docker-engine docker.io containerd runc    -y 
-sudo apt-get update  -y 
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+apt install docker -y
+systemctl start docker
+systemctl enable docker
+systemctl status docker
+#sudo usermod -a -G docker jenkins
+#sudo service docker start
 
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  
-sudo apt-get update  -y 
-sudo chmod a+r /etc/apt/keyrings/docker.gpg     -y 
-sudo apt-get update  -y 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin     -y 
+echo " install Alpine"
+
+
+echo "Install Jenkins"
+docker run \
+  -u root \
+  --rm \
+  -d \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  --name myjenkin \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkins/jenkins
 sudo docker run hello-world 
 sudo service docker start
 sudo service docker enable
