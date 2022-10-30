@@ -25,7 +25,7 @@ sudo apt install nginx -y
 sudo ufw app list
 sudo ufw allow 'Nginx HTTP'
 sudo ufw status
-systemctl status nginx
+systemctl status nginx -y 
 curl -4 icanhazip.com
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle-1.16.312.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
