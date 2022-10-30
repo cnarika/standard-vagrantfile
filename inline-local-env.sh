@@ -2,7 +2,7 @@ $script = <<-SCRIPT
 
 sudo apt update -y
 
-sudo cat /etc/system-release
+sudo cat /etc/system-release   -y 
 
 sudo apt install -y httpd mariadb-server
 
