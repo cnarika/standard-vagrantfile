@@ -47,12 +47,20 @@ terraform --version
 
 echo "Install Docker engine"
 sudo apt update -y
-apt install docker -y
-systemctl start docker
-systemctl enable docker
-systemctl status docker
-#sudo usermod -a -G docker jenkins
-#sudo service docker start
+sudo apt-get remove docker docker-engine docker.io  -y 
+sudo apt-get update -y 
+sudo apt install docker.io -y 
+sudo snap install docker  -y 
+sudo docker --version 
+sudo docker run hello-world  -y 
+sudo docker images 
+sudo docker ps -a 
+sudo docker ps 
+sudo systemctl start docker
+sudo systemctl enable docker
+# sudo systemctl status docker
+sudo usermod -a -G docker jenkins
+sudo service docker start
 
 echo " install Alpine"
 
@@ -71,23 +79,7 @@ docker run \
 sudo docker run hello-world 
 sudo service docker start
 sudo service docker enable
-#sudo service docker status
-#sudo usermod -a -G docker jenkins
-#sudo service docker start
-
-echo " install Alpine"
-
-
-echo "Install Jenkins"
-docker run \
-  -u root \
-  --rm \
-  -d \
-  -p 8080:8080 \
-  -p 50000:50000 \
-  --name myjenkin \
-  -v jenkins-data:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  jenkins/jenkins
+# sudo service docker status
+sudo usermod -a -G docker jenkins
   
 SCRIPT
