@@ -59,7 +59,7 @@ sudo docker ps
 sudo systemctl start docker
 sudo systemctl enable docker
 # sudo systemctl status docker
-sudo usermod -a -G docker jenkins
+
 sudo service docker start
 
 echo " install Alpine"
@@ -80,6 +80,6 @@ sudo docker run hello-world
 sudo service docker start
 sudo service docker enable
 # sudo service docker status
-sudo usermod -a -G docker jenkins
+# sudo usermod -a -G docker jenkins
   
 SCRIPT
