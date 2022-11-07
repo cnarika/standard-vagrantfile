@@ -5,7 +5,9 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
-$script = <<-SCRIPT
+
+$script = <<-SCRIPT 
+
 sudo apt update -y
 
 sudo cat /etc/system-release   -y 
@@ -55,19 +57,18 @@ echo "Install Docker engine"
 sudo apt update -y
 sudo apt-get remove docker docker-engine docker.io  -y 
 sudo apt-get update -y 
-sudo apt install docker -y 
+sudo apt install docker.io -y 
+sudo snap install docker  -y 
 sudo docker --version 
-# sudo docker run hello-world  -y 
+sudo docker run hello-world  -y 
 sudo docker images 
 sudo docker ps -a 
 sudo docker ps 
-#sudo systemctl start docker
-#sudo systemctl enable docker
-#sudo systemctl status docker
-# sudo useradd jenkins  -y 
-# sudo usermod -a -G docker jenkins
+sudo systemctl start docker
+sudo systemctl enable docker
+# sudo systemctl status docker
+
 sudo service docker start
-sudo service docker enable
 
 echo " install Alpine"
 
@@ -83,12 +84,14 @@ docker run \
   -v jenkins-data:/var/jenkins_home \
   -v /var/run/docker.sock:/var/run/docker.sock \
   jenkins/jenkins
-# sudo docker run hello-world 
+sudo docker run hello-world 
 sudo service docker start
 sudo service docker enable
 # sudo service docker status
 # sudo usermod -a -G docker jenkins
-SCRIPT
+
+SCRIPT 
+
 Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $script
 
