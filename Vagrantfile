@@ -6,7 +6,7 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 
-$script = <<-SCRIPT 
+$script = <<-SCRIPT
 
 sudo apt update -y
 
@@ -90,7 +90,7 @@ sudo service docker enable
 # sudo service docker status
 # sudo usermod -a -G docker jenkins
 
-SCRIPT 
+SCRIPT
 
 Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: $script
